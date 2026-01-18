@@ -3,7 +3,7 @@
 
                                                                                                        
   Summary       
-  
+
 ```
 
                                                                
@@ -31,12 +31,6 @@
 
 
 
-#### Deploying 
+#### Test  
  
-
-yarn deploy --network mainnet 
-yarn deploy --network base 
-
-
-
- yarn hardhat verify --network base 0x1082d89364765ED958c830F4E77D001837984E31
+forge test --vvv
