@@ -5,6 +5,8 @@ import "forge-std/Test.sol";
 import "../contracts/SimpleDelegateWallet.sol";
 import "../contracts/mocks/MockERC20.sol";
 
+
+
 contract SimpleDelegateWalletTest is Test {
     SimpleDelegateWallet public implementation;
     MockERC20 public token;
@@ -31,6 +33,32 @@ contract SimpleDelegateWalletTest is Test {
     function test_EOACanExecuteAfterDelegation() public {
         // Delegate EOA to the implementation
         vm.signAndAttachDelegation(address(implementation), EOA_PRIVATE_KEY);
+
+
+/*
+    how this looks on the frontend with viem...
+
+      import { walletClient } from './config'                                                                            
+                                                                                                                         
+      // 1. EOA signs the authorization                                                                                  
+      const authorization = await walletClient.signAuthorization({                                                       
+        contractAddress: '0x...SponsoredWallet',                                                                         
+      })                                                                                                                 
+                                                                                                                         
+      // 2. Sponsor submits tx with the authorization attached                                                           
+      const hash = await sponsorClient.sendTransaction({                                                                 
+        to: eoaAddress,                                                                                                  
+        data: encodeFunctionData({                                                                                       
+          abi: sponsoredWalletAbi,                                                                                       
+          functionName: 'executeWithSignature',                                                                          
+          args: [target, value, data, signature]                                                                         
+        }),                                                                                                              
+        authorizationList: [authorization],                                                                              
+      })                                                                                                                 
+        
+*/
+
+
 
         // Now the EOA has the implementation's code
         // Execute a call through the delegated wallet
