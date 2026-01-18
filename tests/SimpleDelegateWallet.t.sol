@@ -30,17 +30,14 @@ contract SimpleDelegateWalletTest is Test {
         vm.deal(eoaAddress, 10 ether);
     }
 
-    function test_EOACanExecuteAfterDelegation() public {
-        // Delegate EOA to the implementation
-        vm.signAndAttachDelegation(address(implementation), EOA_PRIVATE_KEY);
 
 
-/*
+/*  test_EOACanExecuteAfterDelegation
     how this looks on the frontend with viem...
 
       import { walletClient } from './config'                                                                            
                                                                                                                          
-      // 1. EOA signs the authorization                                                                                  
+      // 1. EOA signs the authorization    Just an offchain sig!                                                                               
       const authorization = await walletClient.signAuthorization({                                                       
         contractAddress: '0x...SponsoredWallet',                                                                         
       })                                                                                                                 
@@ -56,7 +53,11 @@ contract SimpleDelegateWalletTest is Test {
         authorizationList: [authorization],                                                                              
       })                                                                                                                 
         
-*/
+*/ 
+
+    function test_EOACanExecuteAfterDelegation() public {
+        // Delegate EOA to the implementation
+        vm.signAndAttachDelegation(address(implementation), EOA_PRIVATE_KEY);
 
 
 
