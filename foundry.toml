@@ -1,0 +1,33 @@
+[profile.default]
+src = 'contracts'
+out = 'generated/artifacts_forge'
+libs = ['node_modules', 'lib']
+test = 'tests'
+cache_path  = 'generated/cache_forge'
+evm_version = "prague"
+solc_version = "0.8.24"
+
+[profile.fork]
+src = 'contracts'
+out = 'generated/artifacts_forge'
+libs = ['node_modules', 'lib']
+test = 'tests_fork'
+cache_path  = 'generated/cache_forge'
+fs_permissions = [{ access = "read", path = "./deployments" }]
+ 
+
+[doc]
+homepage= "HOME.md"
+ignore = [
+    "*/EAS/*.sol",
+    "*/mock/*.sol",
+
+
+
+    "*/libraries/*.*",
+    "*/types/*.*",
+    "*/Types/*.*",
+    "*/interfaces/*.*",
+    "*/interfaces/escrow/*.*", 
+    "*/README.md",
+]
